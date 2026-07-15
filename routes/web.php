@@ -11,11 +11,11 @@ Route::get('/ideas', function () {
     'ideas' => $ideas
 ]);
 });
-Route::get('/ideas/{id}', function ($id) {
-    $idea = Idea::find($id, ['*']);
+Route::get('/ideas/{idea}', function ( Idea $idea) {
+    // $idea = Idea::findOrFail($id, ['*']);
     
-    return view('ideas.index', [
-        'ideas' => $idea
+    return view('ideas.show', [
+        'idea' => $idea
     ]);
 });
 
