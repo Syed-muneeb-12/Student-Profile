@@ -13,6 +13,13 @@ Route::get('/ideas', function () {
 ]);
 });
 
+//create
+
+Route::get('/ideas/create', function(){
+    return view("ideas.create");
+});
+
+
 //show
 
 Route::get('/ideas/{idea}', function ( Idea $idea) {
