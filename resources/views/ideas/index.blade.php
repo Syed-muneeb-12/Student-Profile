@@ -7,7 +7,7 @@
     <ul>
       @foreach ($ideas as $idea)
         <!-- FIXED: Changed text-small to text-sm for Tailwind CSS -->
-        <a href="/ideas/{{ $idea->id }}" class="text-sm"> {{ $idea->description }}</li>
+        <li><a href="/ideas/{{ $idea->id }}" class="text-sm"> {{ $idea->description }}</a></li>
       @endforeach
     </ul>
   </div>
