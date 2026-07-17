@@ -20,6 +20,15 @@
     </ul>
   </div>
   <div class="navbar-end">
-    <a class="btn">Register</a>
+    @guest
+    <a href="/register" class="btn btn-primary">Register</a>
+    @endguest
+    @auth
+      <form method="POST" action="/logout">
+        <Button class="btn btn-ghost">
+          Log Out
+        </Button>
+      </form>
+    @endauth
   </div>
 </div>

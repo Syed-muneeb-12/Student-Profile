@@ -1,5 +1,6 @@
 <?php
-
+use App\Http\Controllers\Auth\RegisterUserController;
+use App\Http\Controllers\Auth\SessionsController;
 use App\Http\Controllers\IdeaController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Idea;
@@ -19,3 +20,7 @@ Route::patch('/ideas/{idea}', [IdeaController::class, 'update']);
 Route::post('/ideas',[IdeaController::class, 'store']);
 //destroy
 Route::delete('/ideas/{idea}',[IdeaController::class, 'destroy']);
+
+Route::get('/register',[RegisterUserController::class ,"create"]);
+Route::post('/register',[RegisterUserController::class ,"store"]);
+Route::delete('/logout',[SessionsController::class ,"destroy"]);
