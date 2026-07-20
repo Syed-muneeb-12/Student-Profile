@@ -34,7 +34,7 @@ class User extends Authenticatable
 
 
     public function isAdmin():bool{
-        return $this->id===1;
+        return $this->id===3;
     }
 
     public function ideas():HasMany{
