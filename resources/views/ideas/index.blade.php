@@ -14,6 +14,7 @@
     </ul>
   </div>
   @else
-  <p>NO ideas yet.<a href="/ideas/create" class="underline">Create a new one</a></p>
+   <p>NO ideas yet.</p>
 @endif
+ <p class="mt-6 "><a href="/ideas/create" class="underline">Create a new one</a></p>
 </x-layout>

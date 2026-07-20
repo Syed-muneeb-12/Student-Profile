@@ -6,12 +6,14 @@
 
   <label class="label">Name</label>
   <input  class="input" name="name" placeholder="Your Name" required/>
+  <x-forms.error name="name"/>
 
   <label class="label">Email</label>
   <input type="Email" class="input" name="email" placeholder="Your Email" required />
-
+  <x-forms.error name="email"/>
   <label class="label">Password</label>
   <input type="password" class="input" name="password" placeholder="Your Password" required />
+  <x-forms.error name="password"/>
 
 
 

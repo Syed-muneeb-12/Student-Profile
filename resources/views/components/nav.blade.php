@@ -7,24 +7,29 @@
       <ul
         tabindex="-1"
         class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-        <li><a>Home</a></li>
-        <li><a>New Idea</a></li>
+      <li><a href="/ideas">Home</a></li>
+      <li><a href="/ideas/create">New Idea</a></li>
+      <li><a href="/admin">Admin</a></li>
       </ul>
     </div>
-    <a class="btn btn-ghost text-xl">Ideas</a>
+    <a href="/ideas" class="btn btn-ghost text-xl">Ideas</a>
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
       <li><a href="/ideas">Home</a></li>
       <li><a href="/ideas/create">New Idea</a></li>
+      <li><a href="/admin">Admin</a></li>
     </ul>
   </div>
   <div class="navbar-end">
     @guest
-    <a href="/register" class="btn btn-primary">Register</a>
+    <a href="/register" class="btn btn-primary mr-4" >Register</a>
+    <a href="/login" class="btn btn-secondary">Log-in</a>
     @endguest
     @auth
       <form method="POST" action="/logout">
+        @csrf
+        @method("DELETE")
         <Button class="btn btn-ghost">
           Log Out
         </Button>

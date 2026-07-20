@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth; //  FIXED: Imported the correct Auth Facade
+use Illuminate\Support\Facades\Auth; 
+use Illuminate\Validation\Rules\Password as PasswordRule;
 
 class SessionsController extends Controller
 {
@@ -21,30 +21,25 @@ class SessionsController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate the incoming email and password
         $attributes = $request->validate([
-            'email'    => ['required', 'email'],
-            'password' => ['required'],
+            'email'    => ['required', 'email', 'string', 'max:255'],
+            'password' => ['required', 'string',PasswordRule::default()], 
         ]);
 
-        // Attempt to log the user in
-        if (Auth::attempt($attributes)) {
-            // Regenerate the session to prevent security exploits (session fixation)
+        if (Auth::attempt($attributes)){
             $request->session()->regenerate();
 
-            return redirect('/ideas');
-        }
 
-        // If login fails, send them back with an error message
+            return redirect('/ideas');
+        } 
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'email' => 'The provided credentials do not match our records',
         ]);
     }
-
     /**
      * Log the user out (destroying the session).
      */
-    public function destroy() //  FIXED: Removed the 'string $id' requirement
+    public function destroy() 
     {
         Auth::logout();
         

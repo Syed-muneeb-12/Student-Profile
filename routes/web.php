@@ -6,7 +6,9 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Idea;
 
 
-//index
+
+Route::middleware('auth')->group(function(){
+    //index
 Route::get('/ideas',[IdeaController::class, 'index']);
 //create
 Route::get('/ideas/create', [IdeaController::class, 'create']);
@@ -20,7 +22,16 @@ Route::patch('/ideas/{idea}', [IdeaController::class, 'update']);
 Route::post('/ideas',[IdeaController::class, 'store']);
 //destroy
 Route::delete('/ideas/{idea}',[IdeaController::class, 'destroy']);
-
-Route::get('/register',[RegisterUserController::class ,"create"]);
-Route::post('/register',[RegisterUserController::class ,"store"]);
+//logout
 Route::delete('/logout',[SessionsController::class ,"destroy"]);
+});
+
+Route::middleware('guest')->group(function(){
+    Route::get('/register',[RegisterUserController::class ,"create"]);
+   Route::post('/register',[RegisterUserController::class ,"store"]);
+ });
+
+
+
+Route::get('/login',[SessionsController::class ,"create"])->name('login');
+Route::post('/login',[SessionsController::class ,"store"]);
