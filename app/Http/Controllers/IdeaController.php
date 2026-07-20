@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\IdeaRequest;
 use App\Models\Idea;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 
 class IdeaController extends Controller
@@ -45,8 +46,7 @@ class IdeaController extends Controller
      */
     public function show(Idea $idea)
     {
-         // $idea = Idea::findOrFail($id, ['*']);
-            
+        Gate::authorize('update',$idea);
         return view('ideas.show', [
           'idea' => $idea
         ]);
